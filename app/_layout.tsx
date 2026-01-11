@@ -1,23 +1,26 @@
+import { Image } from "expo-image";
 import { Stack } from "expo-router";
-import { Image, View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { AuthProvider } from "./_providers/AuthProvider";
 
 export default function RootLayout() {
   return (
-    <View style={{ flex: 1 }}>
-      {/* CLOUD BACKGROUND */}
-      <Image
-        source={require("../assets/images/clouds.png")}
-        style={StyleSheet.absoluteFill}
-        resizeMode="cover"
-      />
+    <AuthProvider>
+      <View style={{ flex: 1 }}>
+        {/* Cloud background */}
+        <Image
+          source={require("../assets/images/clouds.png")}
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+        />
 
-      {/* ROUTES ON TOP */}
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: "transparent" },
-        }}
-      />
-    </View>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: "transparent" },
+          }}
+        />
+      </View>
+    </AuthProvider>
   );
 }

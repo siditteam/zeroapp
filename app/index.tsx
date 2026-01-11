@@ -1,22 +1,22 @@
-import { useEffect } from "react";
-import { Text, View } from "react-native";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
+import { ActivityIndicator, View } from "react-native";
+import { useAuth } from "./_providers/AuthProvider";
 
 export default function Index() {
+  const { user, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    const t = setTimeout(() => router.replace("/(tabs)/home"), 700);
-    return () => clearTimeout(t);
-  }, [router]);
+    if (loading) return;
+
+    if (user) router.replace("/(tabs)");
+    else router.replace("/auth/login");
+  }, [user, loading, router]);
 
   return (
-    
-    <View className="flex-1 items-center justify-center bg-black">
-    <Text className="text-red-500 text-4xl font-bold">STYLE TEST</Text>
-w
-      <Text className="text-white text-5xl font-semibold tracking-tight">ZERO</Text>
-      <Text className="text-white/60 mt-3">mind • breath • space</Text>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <ActivityIndicator />
     </View>
   );
 }

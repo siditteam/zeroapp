@@ -29,7 +29,7 @@ export const Metrics = {
   pagePadTop: 16,
   pagePadBottom: 34,
 
-  gapScreen: 18,
+  gapScreen: 19,
   gapSection: 12,
 
   radiusXL: 28,
@@ -42,12 +42,12 @@ export const Metrics = {
   panelPad: 16,
 
   // Header sizing (keep display size reasonable)
-  logoMaxWidth: 420,   // ⬅️ this is the real control
-  logoAspect: 700 / 412,
-  headerPadV: 12,
-  headerPadH: 14,
-  logoMaxW: 260,     // ✅ display width (not asset size)
-  logoH: 64,         // ✅ display height
+  logoMaxWidth:740,   // ⬅️ this is the real control
+  logoAspect: 400 / 112,
+  headerPadV: 1,
+  headerPadH: 1,
+  logoMaxW: 290,     // ✅ display width (not asset size)
+  logoH: 164,         // ✅ display height
 };
 
 export const Layout = StyleSheet.create({

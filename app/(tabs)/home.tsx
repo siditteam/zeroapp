@@ -1,6 +1,6 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { useRouter } from "expo-router";
 import SkyScreen from "../_components/SkyScreen";
 import { Glass, Typography } from "../_styles/AppStyles";
 
@@ -27,8 +27,7 @@ export default function Home() {
   return (
     <SkyScreen>
       <View style={{ gap: 10 }}>
-        <Text style={[Typography.kicker, Typography.centerText]}>WELCOME BACK</Text>
-        <Text style={[Typography.bigName, Typography.centerText]}>SAKI</Text>
+
         <Text style={[Typography.subtitle, Typography.centerText]}>What is the energy today?</Text>
       </View>
 

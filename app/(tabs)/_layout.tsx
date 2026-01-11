@@ -1,36 +1,33 @@
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
+import { useEffect } from "react";
+import { useAuth } from "../_providers/AuthProvider";
 import { Colors } from "../_styles/AppStyles";
 
 export default function TabsLayout() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) router.replace("/auth/login");
+  }, [user, loading, router]);
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-
-        tabBarActiveTintColor: "#111",
-        tabBarInactiveTintColor: "rgba(0,0,0,0.45)",
-
-        tabBarLabelStyle: {
-          textTransform: "none",
-          fontSize: 12,
-          fontWeight: "600",
-          paddingBottom:20,
-        },
-
+        tabBarLabelStyle: { textTransform: "none", fontSize: 12, fontWeight: "600" },
         tabBarStyle: {
           backgroundColor: Colors.tabBg,
-          borderTopWidth: 1,
           borderTopColor: Colors.tabBorder,
-          height: 64,
-          paddingBottom: 10,
+          borderTopWidth: 1,
+          height: 62,
           paddingTop: 8,
+          paddingBottom: 8,
         },
+        tabBarActiveTintColor: "rgba(0,0,0,0.90)",
+        tabBarInactiveTintColor: "rgba(0,0,0,0.45)",
       }}
-    >
-      <Tabs.Screen name="index" options={{ title: "Home" }} />
-      <Tabs.Screen name="explore" options={{ title: "Explore" }} />
-      <Tabs.Screen name="library" options={{ title: "Library" }} />
-      <Tabs.Screen name="profile" options={{ title: "Profile" }} />
-    </Tabs>
+    />
   );
 }
